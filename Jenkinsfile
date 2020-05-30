@@ -2,8 +2,7 @@ node('') {
     stage('Prepare') {
         echo "1.Prepare Stage"
         checkout scm
-        script {
-            build_tag = "${GIT_BRANCH}-${BUILD_NUMBER}"
+        sh "build_tag = ${GIT_BRANCH}-${BUILD_NUMBER} "  
         }
     }
     stage('Test') {
