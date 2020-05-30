@@ -3,7 +3,6 @@ node('') {
         echo "1.Prepare Stage"
         checkout scm
         sh "build_tag = ${GIT_BRANCH}-${BUILD_NUMBER} "  
-        }
     }
     stage('Test') {
       echo "2.Test Stage"
