@@ -5,8 +5,8 @@ node('') {
         sh "printenv"
         // sh "echo ${BRANCH_NAME} "
         script {
-            CI_JOB_DATE = $(date "+%Y%m%d")
-            build_tag = "${CI_JOB_DATE}-${BUILD_NUMBER}"
+            // CI_JOB_DATE = $(date "+%Y%m%d")
+            build_tag = "${BUILD_NUMBER}"
         }
     }
     stage('Test') {
