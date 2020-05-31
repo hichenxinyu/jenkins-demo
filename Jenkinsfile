@@ -3,7 +3,7 @@ node('') {
         echo "1.Prepare Stage"
         checkout scm
         script {
-            build_tag = "${env.GIT_BRANCH}-${env.BUILD_NUMBER}"
+            build_tag = "${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
         }
     }
     stage('Test') {
