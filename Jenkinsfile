@@ -3,6 +3,10 @@ node('') {
         echo "1.Prepare Stage"
         checkout scm
         sh "printenv"
+        script {
+            branch=${ref##*/}
+            echo ${branch}
+        }
         sh "echo ${BRANCH_NAME} "
         script {
             build_tag = "${BRANCH_NAME}-${BUILD_NUMBER}"
