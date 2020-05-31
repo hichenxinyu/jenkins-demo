@@ -2,6 +2,7 @@ node('') {
     stage('Prepare') {
         echo "1.Prepare Stage"
         checkout scm
+        sh "printenv"
         script {
             build_tag = "${BRANCH_NAME}-${BUILD_NUMBER}"
         }
