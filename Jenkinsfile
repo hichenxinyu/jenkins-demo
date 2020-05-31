@@ -3,9 +3,10 @@ node('') {
         echo "1.Prepare Stage"
         checkout scm
         sh "printenv"
-        sh "echo ${BRANCH_NAME} "
+        // sh "echo ${BRANCH_NAME} "
         script {
-            build_tag = "${BRANCH_NAME}-${BUILD_NUMBER}"
+            CI_JOB_DATE = $(date "+%Y%m%d")
+            build_tag = "${CI_JOB_DATE}-${BUILD_NUMBER}"
         }
     }
     stage('Test') {
