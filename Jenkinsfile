@@ -16,13 +16,6 @@ node('') {
         echo "3.Build Docker Image Stage"
         sh "docker build -t cnych/jenkins-demo:${build_tag} ."
     }
-    stage('Push') {
-        echo "4.Push Docker Image Stage"
-        withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-            sh "docker login -u ${dockerHubUser} -p ${dockerHubPassword}"
-            sh "docker push cnych/jenkins-demo:${build_tag}"
-        }
-    }
     stage('人工确认') {
         input {
           message '是否部署到测试环境中'
@@ -33,6 +26,13 @@ node('') {
         }
         steps {
           echo "您希望部署的测试环境为 ${testing_env}"
+        }
+    }
+    stage('Push') {
+        echo "4.Push Docker Image Stage"
+        withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+            sh "docker login -u ${dockerHubUser} -p ${dockerHubPassword}"
+            sh "docker push cnych/jenkins-demo:${build_tag}"
         }
     }
     stage('Deploy') {
