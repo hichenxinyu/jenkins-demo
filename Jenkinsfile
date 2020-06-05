@@ -17,10 +17,8 @@ node('') {
         sh "docker build -t cnych/jenkins-demo:${build_tag} ."
     }
     stage('人工确认') {
-        script {
-            input {
-                message '是否部署到测试环境中'
-            }
+        steps {
+            input message: "是否部署到测试环境中"
         }
         // steps {
         //   echo "您希望部署的测试环境为"
