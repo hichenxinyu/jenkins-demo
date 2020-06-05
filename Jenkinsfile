@@ -23,6 +23,18 @@ node('') {
             sh "docker push cnych/jenkins-demo:${build_tag}"
         }
     }
+    stage('人工确认') {
+        input {
+          message '是否部署到测试环境中'
+          submitter "${env.SUBMITTER}"
+          parameters {
+            choice(name: 'testing_env', choices: ['testing-1', 'testing-2', 'testing-3'], description: '请选择部署的测试环境目标')
+          }
+        }
+        steps {
+          echo "您希望部署的测试环境为 ${testing_env}"
+        }
+    }
     stage('Deploy') {
         echo "5. Deploy Stage"
         if (env.BRANCH_NAME == 'master') {
