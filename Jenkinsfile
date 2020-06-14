@@ -8,6 +8,8 @@ pipeline {
     // }
     stage("测试") {
       steps {
+        echo "${env.BRANCH_NAME}"
+        echo "${env.PROJECT_NAME}"
         echo "自动化测试执行中..."
         echo "自动化测试执行通过"
       }
