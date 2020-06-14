@@ -22,7 +22,8 @@ pipeline {
     }
     stage('构建 Docker 镜像') {
       steps {
-        sh "docker build  -t test:${env.BRANCH_NAME}-${CI_JOB_DATE}-${BUILD_NUMBER} ."
+        // -${BUILD_NUMBER}
+        sh "docker build  -t test:${env.BRANCH_NAME}-${CI_JOB_DATE} ."
       }
     }
     stage('人工确认') {
