@@ -1,11 +1,11 @@
 pipeline {
   agent any
   stages {
-    stage ('checkout scm') {
-      steps {
-          checkout(scm)
-      }
-    }
+    // stage ('checkout scm') {
+    //   steps {
+    //       checkout(scm)
+    //   }
+    // }
     stage("测试") {
       steps {
         echo "自动化测试执行中..."
