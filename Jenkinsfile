@@ -14,7 +14,7 @@ pipeline {
     }
     stage('构建 Docker 镜像') {
       steps {
-        sh "docker build  -t test:SNAPSHOT-$BUILD_NUMBER ."
+        sh "docker build  -t test:SNAPSHOT-$BRANCH_NAME-$BUILD_NUMBER ."
       }
     }
     stage('人工确认') {
