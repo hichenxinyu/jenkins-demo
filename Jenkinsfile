@@ -1,5 +1,11 @@
 pipeline {
   agent any
+  environment {
+      CI_JOB_DATE = """${sh(
+          returnStdout: true,
+          script: 'date "+%Y%m%d'
+      )}"""
+  }
   stages {
     // stage ('checkout scm') {
     //   steps {
@@ -16,10 +22,6 @@ pipeline {
     }
     stage('构建 Docker 镜像') {
       steps {
-        CI_JOB_DATE = """${sh(
-                returnStdout: true,
-                script: 'date "+%Y%m%d'
-            )}"""
         sh "docker build  -t test:SNAPSHOT-${env.PROJECT_NAME}-${env.BRANCH_NAME}-${CI_JOB_DATE}-${env.BUILDNUMBER} ."
       }
     }
