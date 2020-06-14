@@ -1,16 +1,17 @@
 pipeline {
   agent any
   stages {
-    stage("测试和构建") {
+    stage("测试") {
       steps {
         echo "自动化测试执行中..."
         echo "自动化测试执行通过"
-
-        echo "构建中..."
-        echo "构建成功"
       }
     }
-
+    stage('构建 Docker 镜像') {
+      steps {
+        sh "docker build  -t test:0.1 ."
+      }
+    }
     stage('人工确认') {
       input {
         message "是否部署到测试环境中"
