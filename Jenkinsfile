@@ -22,7 +22,7 @@ pipeline {
     }
     stage('构建 Docker 镜像') {
       steps {
-        sh "docker build  -t test:SNAPSHOT-${env.PROJECT_NAME}-${env.BRANCH_NAME}-${CI_JOB_DATE}-${env.BUILDNUMBER} ."
+        sh "docker build  -t test:SNAPSHOT-${env.PROJECT_NAME}-${env.BRANCH_NAME}-${CI_JOB_DATE}-${BUILDNUMBER} ."
       }
     }
     stage('人工确认') {
