@@ -3,7 +3,7 @@ pipeline {
   environment {
       CI_JOB_DATE = """${sh(
           returnStdout: true,
-          script: 'date "+%Y%m%d'
+          script: 'date "+%Y%m%d"'
       )}"""
   }
   stages {
