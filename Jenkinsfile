@@ -23,7 +23,7 @@ pipeline {
     stage('构建 Docker 镜像') {
       steps {
         // -${BUILD_NUMBER}
-        sh "docker build -t test:${env.BRANCH_NAME}-${BUILD_NUMBER} ."
+        sh "docker build -t test:${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."
       }
     }
     stage('人工确认') {
