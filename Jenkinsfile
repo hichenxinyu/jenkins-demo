@@ -16,7 +16,7 @@ pipeline {
     }
     stage('构建 Docker 镜像') {
       steps {
-        CI_JOB_DATE = sh(date "+%Y%m%d")
+        CI_JOB_DATE = $(date "+%Y%m%d")
         sh "docker build  -t test:SNAPSHOT-${env.PROJECT_NAME}-${env.BRANCH_NAME}-${CI_JOB_DATE}-$BUILD_NUMBER ."
       }
     }
