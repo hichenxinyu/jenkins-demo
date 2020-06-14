@@ -1,6 +1,11 @@
 pipeline {
   agent any
   stages {
+    stage ('checkout scm') {
+      steps {
+          checkout(scm)
+      }
+    }
     stage("测试") {
       steps {
         echo "自动化测试执行中..."
@@ -9,7 +14,7 @@ pipeline {
     }
     stage('构建 Docker 镜像') {
       steps {
-        sh "docker build  -t test:0.1 ."
+        sh "docker build  -t test:SNAPSHOT-$BUILD_NUMBER ."
       }
     }
     stage('人工确认') {
