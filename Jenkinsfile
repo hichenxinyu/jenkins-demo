@@ -47,7 +47,24 @@ pipeline {
       steps {
         echo "部署中..."
         echo "部署成功"
+        dingtalk ()
       }
     }
   }
 }
+
+
+dingtalk (
+    robot: '',
+    type: '',
+    at:[],
+    atAll: false,
+    title: '',
+    text:[],
+    messageUrl: '',
+    picUrl:'',
+    singleTitle:'',
+    btns: [],
+    btnLayout: '',
+    hideAvatar: false
+)
