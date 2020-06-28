@@ -47,6 +47,7 @@ pipeline {
       steps {
         echo "部署中..."
         echo "部署成功"
+        
       }
     }
   }
